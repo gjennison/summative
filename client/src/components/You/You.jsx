@@ -48,11 +48,11 @@ export default class You extends Component{
         let currentState;
 
         if(this.state.currentState === "listings") currentState = <Listings backCallback={this.backCallback} editCallback={this.editCallback} deleteCallback={this.deleteCallback}/>
-        else if(this.state.currentState === "edit") currentState = <Edit className="container" product={this.state.currentProduct[0]}/>
-        else if(this.state.currentState === "account") currentState = <Account/>
+        else if(this.state.currentState === "edit") currentState = <Edit backCallback={() => this.setState({currentState: 'listings'})} product={this.state.currentProduct[0]}/>
+        else if(this.state.currentState === "account") currentState = <Account backCallback={this.backCallback}/>
         else currentState = <YouHome masterCallback={this.masterCallback} callback={this.homeCallback}/>
         return(
-            <div className="container">
+            <div>
                 {currentState}
                 <Delete product={this.state.currentProduct[0]} callback={this.closeDeleteModalCallback} displayDelete={this.state.displayDelete}/>
             </div>

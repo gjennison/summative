@@ -10,8 +10,7 @@ export default class YouHome extends Component{
     }
     render(){
         return(
-            <div className="YouHome">
-                <h3>settings</h3>
+            <div className="YouHome container">
                 <div className="group">
                     <h2>My Account</h2>
                     <p className="subheading" onClick={() => this.props.callback('account')}>Account Details</p>

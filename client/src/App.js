@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import './style.scss';
 import Container from './components/Container';

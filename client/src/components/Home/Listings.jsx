@@ -26,17 +26,24 @@ export default class Home extends Component{
         this.setState({search: e.target.value})
     }
 
+    addToCart(product){
+        axios.put(`http://localhost:4000/api/products/${product.id}`,
+        `cart=true`)
+    }
+
     render(){
         let displayRecommend = true;
 
-        if(this.state.search != "") displayRecommend = false;
+        if(this.state.search !== "") displayRecommend = false;
         return(
             <div className="listings home">
                 <input className="search" type="text" placeholder="search" value={this.state.search} onChange={this.search}/>
                 <p style={{display: displayRecommend ? 'block' : 'none'}}><strong>Recommended for you</strong></p>
                 {this.state.products.filter(product => product.title.includes(this.state.search)).map((product, index) => 
                     <div className="product" key={index}>
-                        <img src={product.img}/>
+                        <div className="product-img">
+                            <img alt="" src={product.img}/>
+                        </div>
                         <div className="product-content">
                             <div className="product-title-price">
                                 <p>{product.title}</p>
@@ -44,7 +51,7 @@ export default class Home extends Component{
                             </div>
                             <div className="product-details-buy">
                                 <button onClick={() => this.props.detailsCallback(product)}>view details</button>
-                                <button onClick={() => this.props.buyCallback(product)}>buy</button>
+                                <button onClick={() => this.addToCart(product)}>add to cart</button>
                             </div>
                         </div>
                     </div>

@@ -27,14 +27,19 @@ export default class Listings extends Component{
                 <div className="navbar" onClick={this.props.backCallback}>account</div>
                 {this.state.products.filter(product => product.user.includes("you")).map((product, index) => 
                     <div className="product" key={index}>
-                        <img src={product.img}/>
-                        <div className="product-title-price">
-                            <p>{product.title}</p>
-                            <p>${product.price}</p>
+                        <div className="product-img">
+                            <img alt="" src={product.img}/>
                         </div>
-                        <div className="product-details-buy">
-                            <button onClick={() => this.props.editCallback(product)}>edit details</button>
-                            <button onClick={() => this.props.deleteCallback(product)}>delete</button>
+
+                        <div className="product-content">
+                            <div className="product-title-price">
+                                <p>{product.title}</p>
+                                <p>${product.price}</p>
+                            </div>
+                            <div className="product-details-buy">
+                                <button onClick={() => this.props.editCallback(product)}>edit details</button>
+                                <button onClick={() => this.props.deleteCallback(product)}>delete</button>
+                            </div>
                         </div>
                     </div>
                 )}

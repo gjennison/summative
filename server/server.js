@@ -113,6 +113,7 @@ router.put("/products/:id", (req, res) => {
       });
 
     var data = req.body;
+    console.log(data)
 
     if (objFromMongoDB === null) {
       return res.json({

@@ -16,46 +16,39 @@ export default class Listings extends Component{
         axios.get("http://localhost:4000/api/products").then(res => {
             let temp = []
             res.data.forEach(el => {
-                // temp.push(Object.values(el))
                 temp.push(el)
             })
             this.setState({products: temp})
-
-            /*
-
-            generated an array of arrays instead of array of objects
-            due to react errors
-
-            indexes:
-
-            1 = title
-            2 = description
-            3 = price
-            4 = img
-            5 = user
-            6 = favourites
-            7 = cart
-
-            */
         })
+    }
+
+    remove(product){
+        axios.put(`http://localhost:4000/api/products/${product.id}`,
+        `cart=false`)
     }
 
     render(){
         return(
             <React.Fragment>
+                <h1>Cart</h1>
                 {this.state.products.filter(x => x.cart === "true").map((product, index) => 
                     <div className="product" key={index}>
-                        <img src={product.img}/>
-                        <div className="product-title-price">
-                            <p>{product.title}</p>
-                            <p>${product.price}</p>
+                        <div className="product-img">
+                            <img alt="" src={product.img}/>
                         </div>
-                        <div className="product-details-buy">
-                            <button onClick={() => this.props.detailsCallback(product)}>view details</button>
-                            <button onClick={() => this.props.buyCallback(product)}>buy</button>
+
+                        <div className="product-content">
+                            <div className="product-title-price">
+                                <p>{product.title}</p>
+                                <p>${product.price}</p>
+                            </div>
+                            <div className="product-details-buy">
+                                <button onClick={() => this.remove(product)}>remove</button>
+                            </div>
                         </div>
                     </div>
                 )}
+                <button onClick={this.props.buyNowPage}>buy now</button>
             </React.Fragment>
         )
     }

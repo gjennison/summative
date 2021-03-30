@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
 export default class ViewDetails extends Component{
-    addToCart(product){
-        axios.put(`http://localhost:4000/api/products/${product.id}`,
-        `cart=true`)
-    }
-
     render(){
         return(
             <div className="view-details">
@@ -18,7 +12,7 @@ export default class ViewDetails extends Component{
                     <p>{this.props.product.location}</p>
                     <div className="view-details-price-add-to-cart">
                         <p>${this.props.product.price}</p>
-                        <button onClick={() => this.addToCart(this.props.product)}>add to cart</button>
+                        <button onClick={() => this.props.buyCallback(this.props.product)}>add to cart</button>
                     </div>
 
                     <p className="subheading">Product description</p>

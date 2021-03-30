@@ -43,7 +43,7 @@ export default class Container extends Component{
         currentTab.classList.remove('inactive')
 
         allTabs.forEach(el => {
-            if(el != currentTab) {
+            if(el !== currentTab) {
                 el.classList.remove('active')
                 el.classList.add('inactive')
             }
