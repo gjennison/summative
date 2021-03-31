@@ -42,12 +42,11 @@
 }
 
 .payment{
+    font-size: 1.1em;
     .payment-options{
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        // margin-left: 20%;
-        // margin-right: 20%;
         div{
             width: 1px;
             height: 80px;
@@ -57,18 +56,40 @@
 
     .payment-details{
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: 45% 45%;
         gap: 1em;
         justify-content: center;
-        // margin: 20px;
         .detail{
             input{
+                width: 95%;
+                font-size: 1.1em;
                 background-color: lightgrey;
+            }
+
+            .expiry{
+                display: flex;
+                justify-content: space-evenly;
             }
         }
     }
 
     hr{
         margin: 20px;
+    }
+
+    .payment-amount{
+        .amount{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        font-size: 1.2em;
+        color: rgb(60,60,60);
+
+        .subheading{
+            font-size: 0.9em;
+            position: relative;
+            top: -10px;
+        }
     }
 }

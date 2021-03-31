@@ -31,7 +31,7 @@ export default class Listings extends Component{
         return(
             <React.Fragment>
                 <h1>Cart</h1>
-                {this.state.products.filter(x => x.cart === "true").map((product, index) => 
+                {this.props.products.map((product, index) => 
                     <div className="product" key={index}>
                         <div className="product-img">
                             <img alt="" src={product.img}/>

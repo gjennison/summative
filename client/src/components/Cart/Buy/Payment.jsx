@@ -27,7 +27,7 @@ export default class Payment extends Component{
                     </div>
                     <div className="detail">
                         <p className="subheading">Expiry Date</p>
-                        <div>
+                        <div className="expiry">
                             <select name="" id="">
                                 option
                             </select>
@@ -43,6 +43,26 @@ export default class Payment extends Component{
                 </div>
 
                 <hr/>
+
+                <div className="payment-amount subheading-heavy">
+                    <div className="amount">
+                        <p>Item(s)</p>
+                        <p>${this.props.productsCost}</p>
+                    </div>
+
+                    <div className="amount">
+                        <div className="amount-left">
+                            <p>Shipping</p>
+                            <p className="subheading">{this.props.shippingType}</p>
+                        </div>
+                        <p>${this.props.shippingCost}</p>
+                    </div>
+
+                    <div className="amount bold">
+                        <p>Total</p>
+                        <p>${this.props.totalCost}</p>
+                    </div>
+                </div>
             </div>
         )
     }
