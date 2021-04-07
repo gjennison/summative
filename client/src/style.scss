@@ -1,6 +1,13 @@
 @import './scss/home.scss';
 @import './scss/you.scss';
 @import './scss/cart.scss';
+@import './scss/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
 .product{
     display: flex;
     justify-content: space-evenly;
@@ -62,17 +69,19 @@
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    background-color: $primary;
     .tab{
         width: 100%;
     }
 }
 
 .active{
-    background-color: rgba(200,200,200,0.4);
+    background-color: rgba(200,200,200,1);
 }
 
 .inactive{
-    background-color: rgba(100,100,100,0.4);;
+    // background-color: rgba(100,100,100,0.4);
+    background-color: $primary;
 }
 
 .back-button{
@@ -83,13 +92,15 @@
 
 button{
     padding: 6px;
-    background-color: lightgrey;
+    background-color: $primary;
+    color: white;
     border: none;
 }
 
 .navbar{
     padding: 8px;
-    background-color: lightgrey;
+    background-color: $primary;
+    color: white;
     text-align: left;
 }
 
@@ -100,5 +111,6 @@ input, textarea{
 }
 
 .subheading{
-    color: grey;
+    color: $secondary;
+    font-size: 1.1em;
 }

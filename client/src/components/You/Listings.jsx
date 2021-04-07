@@ -17,7 +17,6 @@ export default class Listings extends Component{
                 temp.push(el)
             })
             this.setState({products: temp})
-            console.log(temp)
         })
     }
 

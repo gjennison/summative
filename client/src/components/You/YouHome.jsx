@@ -23,7 +23,7 @@ export default class YouHome extends Component{
                 <div className="group">
                     <p className="subheading bold"><strong>Selling</strong></p>
                     <p className="subheading" onClick={() => this.props.callback('listings')}>Listed Items</p>
-                    <button>List a new item</button>
+                    <button onClick={() => this.props.callback('list-new')}>List a new item</button>
                 </div>
             </div>
         )

@@ -4,7 +4,7 @@ export default class ViewDetails extends Component{
     render(){
         return(
             <div className="view-details">
-                <div className="back-button" onClick={() => this.props.callBACK()}>back</div>
+                <div className="back-button navbar" onClick={() => this.props.callBACK()}>back</div>
                 <img src={this.props.product.img} alt=""/>
 
                 <div className="view-details-content container">

@@ -16,7 +16,6 @@ export default class Favourites extends Component{
         axios.get("http://localhost:4000/api/products").then(res => {
             let temp = []
             res.data.forEach(el => {
-                // temp.push(Object.values(el))
                 temp.push(el)
             })
             this.setState({products: temp})

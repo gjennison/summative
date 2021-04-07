@@ -4,6 +4,7 @@ import Edit from './Edit';
 import Delete from './Delete';
 import YouHome from './YouHome';
 import Account from './Account';
+import ListNew from './ListNew';
 
 export default class You extends Component{
     constructor(props){
@@ -50,6 +51,7 @@ export default class You extends Component{
         if(this.state.currentState === "listings") currentState = <Listings backCallback={this.backCallback} editCallback={this.editCallback} deleteCallback={this.deleteCallback}/>
         else if(this.state.currentState === "edit") currentState = <Edit backCallback={() => this.setState({currentState: 'listings'})} product={this.state.currentProduct[0]}/>
         else if(this.state.currentState === "account") currentState = <Account backCallback={this.backCallback}/>
+        else if(this.state.currentState === "list-new") currentState = <ListNew />
         else currentState = <YouHome masterCallback={this.masterCallback} callback={this.homeCallback}/>
         return(
             <div>
