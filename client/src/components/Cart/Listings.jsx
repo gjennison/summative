@@ -30,7 +30,7 @@ export default class Listings extends Component{
     render(){
         return(
             <React.Fragment>
-                <h1>Cart</h1>
+                <h2 className="secondary">Cart</h2>
                 {this.props.products.map((product, index) => 
                     <div className="product" key={index}>
                         <div className="product-img">

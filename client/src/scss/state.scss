@@ -1,0 +1,19 @@
+.active, .favourite{
+    .icon-active, .icon-favourite{
+        display: block;
+        font-size: 2.5em;
+    }
+    .icon-inactive, .icon-notFavourite{
+        display: none;
+    }
+}
+
+.inactive, .notFavourite{
+    .icon-active, .icon-favourite{
+        display: none;
+    }
+    .icon-inactive, .icon-notFavourite{
+        display: block;
+        font-size: 2.5em;
+    }
+}

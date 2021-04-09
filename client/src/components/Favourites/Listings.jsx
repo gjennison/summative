@@ -30,8 +30,8 @@ export default class Favourites extends Component{
     render(){
         return(
             <React.Fragment>
-                <h1>Favourites</h1>
-                {this.state.products.filter(x => x.favourites === "true").map((product, index) => 
+                <h2 className="secondary">Favourites</h2>
+                {this.state.products.filter(x => x.favourites === "yes").map((product, index) => 
                     <div className="product" key={index}>
 
                         <div className="product-img">

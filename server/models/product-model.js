@@ -22,4 +22,4 @@ var ProductSchema = new Schema(
 );
 
 // singular capitalized name for the mongo collection - Writer
-module.exports = mongoose.model("Products", ProductSchema);
+module.exports = mongoose.model("Product", ProductSchema);

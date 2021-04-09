@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import { IconContext } from "react-icons";
+import {AiFillStar} from 'react-icons/ai';
+import smile from '../../smile.png';
+import face from '../../face.png';
+import frown from '../../frown.png';
+import profile from '../../profile.png';
+import back from '../../back.png';
 
 export default class Account extends Component{
     constructor(props){
@@ -11,33 +18,47 @@ export default class Account extends Component{
     render(){
         return(
             <React.Fragment>
-                <div className="navbar" onClick={this.props.backCallback}>account</div>
+                <div className="navbar" onClick={this.props.backCallback}>
+                    <img src={back} alt=""/>
+                    <p>account</p>
+                </div>
+                <div className="account-header-img">
+                    <img src={profile} alt=""/>
+                </div>
                 <div className="account container">
                     <div className="account-heading">
-                        <img src="" alt=""/>
-                        <h4>jane_doe</h4>
-                        <p>Seller Rating 4.6</p>
+                        <h4 className="subheading">anna_lynn89</h4>
+                        <p>
+                            <div>
+                            Seller Rating 4.6 &nbsp;
+                            </div>
+                        <IconContext.Provider value={{color: '#F0CE69'}}>
+                            <div>
+                                <AiFillStar />
+                            </div>
+                        </IconContext.Provider>
+                        </p>
                     </div>
 
                     <hr/>
 
                     <div className="account-section">
-                        <p className="subheading">First name</p>
+                        <p className="greyheading">Name</p>
                         <p>Jane Doe</p>
 
-                        <p className="subheading">Location</p>
+                        <p className="greyheading">Location</p>
                         <p>Christchurch</p>
 
                     </div>
 
-                    <p className="account-section"><strong>Seller Reviews</strong></p>
+                    <p className="account-section subheading"><strong>Seller Reviews</strong></p>
 
                     <hr/>
 
                     <div className="account-section">
-                        <p>4 positive</p>
-                        <p>1 neutral</p>
-                        <p>0 negative</p>
+                        <p><img alt="" src={smile}/> 4 positive</p>
+                        <p><img alt="" src={face} /> 1 neutral</p>
+                        <p><img alt="" src={frown} /> 0 negative</p>
                     </div>
                 </div>
             </React.Fragment>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import Listings from './Listings';
 import Edit from './Edit';
 import Delete from './Delete';
@@ -14,7 +15,19 @@ export default class You extends Component{
             currentState: "home",
             currentProduct: [],
             displayDelete: false,
+            products: [],
         }
+    }
+    componentDidMount(){
+        axios.get("http://localhost:4000/api/products").then(res => {
+            let temp = []
+            res.data.forEach(el => {
+                if(el.user ==='you')
+                   temp.push(el)
+                //    console.log(el.user)
+            })
+            this.setState({products: temp})
+        })
     }
 
     editCallback = (product) => {
@@ -48,7 +61,7 @@ export default class You extends Component{
     render(){
         let currentState;
 
-        if(this.state.currentState === "listings") currentState = <Listings backCallback={this.backCallback} editCallback={this.editCallback} deleteCallback={this.deleteCallback}/>
+        if(this.state.currentState === "listings") currentState = <Listings products={this.state.products} backCallback={this.backCallback} editCallback={this.editCallback} deleteCallback={this.deleteCallback}/>
         else if(this.state.currentState === "edit") currentState = <Edit backCallback={() => this.setState({currentState: 'listings'})} product={this.state.currentProduct[0]}/>
         else if(this.state.currentState === "account") currentState = <Account backCallback={this.backCallback}/>
         else if(this.state.currentState === "list-new") currentState = <ListNew />

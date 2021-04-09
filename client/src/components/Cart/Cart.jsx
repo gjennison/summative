@@ -24,7 +24,7 @@ export default class Cart extends Component{
             res.data.forEach(el => {
                 temp.push(el)
             })
-            temp = temp.filter(x => x.cart === "true")
+            temp = temp.filter(x => x.cart === "yes")
             this.setState({products: temp})
         })
     }
