@@ -113,7 +113,7 @@ router.put("/products/:id", (req, res) => {
       });
 
     var data = req.body;
-    console.log(data)
+    console.log(data);
 
     if (objFromMongoDB === null) {
       return res.json({
@@ -140,6 +140,6 @@ router.put("/products/:id", (req, res) => {
 });
 
 let PORT = 4000;
-app.listen(PORT, () => {
+app.listen(PORT || process.env.PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
