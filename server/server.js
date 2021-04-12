@@ -140,6 +140,6 @@ router.put("/products/:id", (req, res) => {
 });
 
 let PORT = 4000;
-app.listen(PORT || process.env.PORT, () => {
+app.listen(PORT || process.env.PORT, "0.0.0.0", () => {
   console.log(`listening on port ${PORT}`);
 });
