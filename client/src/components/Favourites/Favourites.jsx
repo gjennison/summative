@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Listings from "./Listings";
-import ViewDetails from "./ViewDetails";
+import ViewDetails from "../Home/ViewDetails";
 
 export default class Favourites extends Component{
     constructor(props){
@@ -26,7 +26,7 @@ export default class Favourites extends Component{
         let state;
 
         if(this.state.whichState === 'listings') state = <Listings detailsCallback={this.detailsCallback}/>
-        else state = <ViewDetails callBACK={this.callBACK} product={this.state.detailsData[0]}/>
+        else state = <ViewDetails title="favourites" callBACK={this.callBACK} product={this.state.detailsData[0]}/>
         return(
             <div>
                 {state}

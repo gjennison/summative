@@ -1,16 +1,18 @@
 .search{
     background-color: #FFF2EB;
-    width: 80%;
+    width: 85%;
     margin: auto;
     margin-top: 16px;
     padding: 8px;
     display: flex;
     align-items: center;
+    img{
+        height: 20px;
+        padding: 8px;
+    }
     input{
-        padding-top: 0px;
-        margin-left: 8px;
         color: $primary;
-        font-size: 1.5em;
+        font-size: 1.2em;
         background-color: #FFF2EB;
         &::placeholder{
             color: $primary;
@@ -22,16 +24,16 @@
     display: flex;
     justify-content: space-evenly;
     margin: 4px;
-    margin-top: 8px;
+    margin-top: 16px;
     padding: 8px;
+    padding-bottom: 16px;
     align-items: center;
-    background-color: rgba(200,200,200,0.25);
+    border-bottom: 1px solid lightgrey;
     margin-left: 12px;
     margin-right: 12px;
-    border-radius: 4px;
     .product-img{
         width: 40%;
-        height: 120px;
+        height: 110px;
         img{
             width: 100%;
             height: 100%;
@@ -41,12 +43,22 @@
     }
 
     .product-content{
-        width: 60%;
+        width: 50%;
+        text-align: left;
+        padding-left: 5%;
+
+        .price{
+            font-weight: bold;
+        }
         .product-details-buy{
             display: flex;
             justify-content: space-evenly;
         }
     }
+}
+
+[class~='product']:last-of-type{
+    border-bottom: none;
 }
 
 .modal{
@@ -99,6 +111,7 @@ button{
     background-color: $primary;
     color: white;
     border: none;
+    border-radius: 4px;
 }
 
 .navbar{
@@ -122,4 +135,59 @@ input, textarea{
     border: none;
     padding: 4px;
     outline: none;
+}
+
+.progress-bubbles{
+    display: flex;
+    justify-content: space-evenly;
+
+    margin: auto;
+    margin-top: 16px;
+    margin-bottom: 32px;
+
+    .bubble{
+        display: flex;
+        margin-left: 8px;
+        margin-right: 8px;
+        
+        div{
+            // color: white;
+            // background-color: $secondary;
+            border-radius: 50%;
+            padding: 8px;
+            
+            border: 1px solid $secondary;
+            margin-right: 8px;
+            span{
+                padding-top: 8px;
+            }
+        }
+    }
+
+    .bubbleProgressed{
+        div{
+            color: white;
+            background-color: $secondary;
+        }
+    }
+    .bubbleNotProgressed{
+        div{
+            color: lightgrey;
+            background-color: white;
+        }
+    }
+}
+
+.modal{
+    background-color: rgba(100,100,100,0.4);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    .modal-content{
+        background-color: white;
+    }
 }

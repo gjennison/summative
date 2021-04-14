@@ -34,7 +34,7 @@ export default class Home extends Component{
         let currentState;
 
         if(this.state.whichState === 'details'){
-            currentState = <ViewDetails product={this.state.detailsData[0]} callBACK={this.goBack} buyCallback={this.buyCallback}/>
+            currentState = <ViewDetails title="home" product={this.state.detailsData[0]} callBACK={this.goBack} buyCallback={this.buyCallback}/>
         }
         else if(this.state.whichState === 'buy'){
             currentState = <Buy product={this.state.buyData[0]} callBACK={this.goBack}/>

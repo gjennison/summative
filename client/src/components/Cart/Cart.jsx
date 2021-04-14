@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Listings from './Listings';
 import Buy from './Buy';
+import ViewDetails from '../Home/ViewDetails';
 
 export default class Cart extends Component{
     constructor(props){
@@ -9,6 +10,7 @@ export default class Cart extends Component{
 
         this.state = {
             state: "listings",
+            detailsData: [],
             products: []
         }
     }
@@ -17,6 +19,16 @@ export default class Cart extends Component{
         console.log('buy now')
         this.setState({state: 'buy'})
     }
+    
+    detailsCallback = (listingData) => {
+        let temp = []
+        temp.push(listingData)
+        this.setState({detailsData: temp, state: 'details'})
+    }
+
+    callBACK = e => {
+        this.setState({state: 'listings'})
+    }
 
     componentDidMount(){
         axios.get("http://localhost:4000/api/products").then(res => {
@@ -24,15 +36,16 @@ export default class Cart extends Component{
             res.data.forEach(el => {
                 temp.push(el)
             })
-            temp = temp.filter(x => x.cart === "yes")
+            temp = temp.filter(x => x.cart === "true")
             this.setState({products: temp})
         })
     }
 
     render(){
         let state;
-        if(this.state.state === 'listings') state = <Listings products={this.state.products} buyNowPage={this.buyNowPage}/>;
-        else state = <Buy products={this.state.products}/>
+        if(this.state.state === 'listings') state = <Listings detailsCallback={this.detailsCallback}  products={this.state.products} buyNowPage={this.buyNowPage}/>;
+        else if (this.state.state === 'details') state = <ViewDetails title="cart" callBACK={this.callBACK} product={this.state.detailsData[0]}/>
+        else state = <Buy backCallback={this.callBACK} products={this.state.products}/>
         return(
             <div>
                 {state}

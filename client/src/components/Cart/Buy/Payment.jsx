@@ -1,21 +1,30 @@
 import React, { Component } from "react";
+import Modal from "./Modal";
 
 export default class Payment extends Component{
     constructor(props){
         super(props)
 
         this.state = {
+            showModal: false,
         }
     }
 
+    showModal = e => {
+        this.setState({showModal: true})
+    }
+
+    closeModal = e => {
+        this.setState({showModal: false})
+    }
+
     render(){
+        let modal;
+
+        if(this.state.showModal) modal = <Modal modalClose={this.closeModal}/>
+
         return(
             <div className="payment container">
-                {/* <div className="payment-options">
-                    <h3>Credit card</h3>
-                    <h3>PayPal</h3>
-                </div> */}
-
                 <div className="payment-details">
                     <div className="detail">
                         <p className="subheading">Card Number</p>
@@ -29,10 +38,25 @@ export default class Payment extends Component{
                         <p className="subheading">Expiry Date</p>
                         <div className="expiry">
                             <select name="" id="">
-                                option
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
                             </select>
                             <select name="" id="">
-                                <option value=""></option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
                             </select>
                         </div>
                     </div>
@@ -63,6 +87,9 @@ export default class Payment extends Component{
                         <p>${this.props.totalCost}</p>
                     </div>
                 </div>
+
+                <button onClick={this.showModal}>place order</button>
+                {modal}
             </div>
         )
     }

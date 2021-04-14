@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import back from '../../back.png';
+import {IconContext} from "react-icons";
+import {BsTrash} from 'react-icons/bs';
+import {FiEdit2} from 'react-icons/fi';
 
 export default class Listings extends Component{
     constructor(props){
@@ -39,9 +42,19 @@ export default class Listings extends Component{
                                 <p>{product.title}</p>
                                 <p>${product.price}</p>
                             </div>
-                            <div className="product-details-buy">
-                                <button onClick={() => this.props.editCallback(product)}>edit details</button>
-                                <button onClick={() => this.props.deleteCallback(product)}>delete</button>
+                            <div className="account-listings-icons">
+                                <IconContext.Provider value={{className: 'account-icon icon'}}>
+                                    <div onClick={() => this.props.editCallback(product)}>
+                                        <FiEdit2/>
+                                    </div>
+                                </IconContext.Provider>
+                                <IconContext.Provider value={{className: 'account-icon icon'}}>
+                                    <div onClick={() => this.props.deleteCallback(product)}>
+                                        <BsTrash/>
+                                    </div>
+                                </IconContext.Provider>
+                                {/* <button onClick={() => this.props.editCallback(product)}>edit details</button>
+                                <button onClick={() => this.props.deleteCallback(product)}>delete</button> */}
                             </div>
                         </div>
                     </div>

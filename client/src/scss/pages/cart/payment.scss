@@ -1,5 +1,4 @@
 .payment{
-    font-size: 1.1em;
     .payment-options{
         display: flex;
         justify-content: space-evenly;
@@ -17,6 +16,12 @@
         gap: 1em;
         justify-content: center;
         .detail{
+            p.subheading{
+                font-size: 0.9em;
+                margin-top: 0px;
+                color: rgb(100,100,100);
+            }
+            margin-bottom: 16px;
             input{
                 width: 95%;
                 font-size: 1.1em;
@@ -26,6 +31,13 @@
             .expiry{
                 display: flex;
                 justify-content: space-evenly;
+                select{
+                    border: none;
+                    outline: none;
+                    background-color: $secondary-light;
+                    width: 45%;
+                    height: 30px;
+                }
             }
         }
     }
@@ -39,8 +51,10 @@
             display: flex;
             justify-content: space-between;
         }
+        margin-left: 5%;
+        margin-right: 5%;
 
-        font-size: 1.2em;
+        // font-size: 1.2em;
         color: rgb(60,60,60);
 
         .subheading{
@@ -48,5 +62,14 @@
             position: relative;
             top: -10px;
         }
+    }
+
+    button{
+        background-color: $secondary;
+        font-size: 1.1em;
+        width: 70%;
+        margin-top: 40px;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 }

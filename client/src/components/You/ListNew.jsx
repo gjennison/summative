@@ -13,7 +13,7 @@ export default class ListNew extends Component{
             price: "",
             condition: "new",
             shipping: "arranged on sale",
-            pickup: "yes",
+            pickup: "no",
         }
     }
 

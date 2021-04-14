@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import back from '../../back.png';
 
 export default class Edit extends Component{
     constructor(props){
@@ -63,7 +64,10 @@ export default class Edit extends Component{
         return(
             <React.Fragment>
                 <div className="edit">
-                    <div className="navbar" onClick={this.props.backCallback}>listings</div>
+                    <div className="navbar" onClick={this.props.backCallback}>
+                        <img src={back} alt=""/>
+                        <p>listings</p>
+                    </div>
 
                     <div className="container">
                         <div className="edit-section">

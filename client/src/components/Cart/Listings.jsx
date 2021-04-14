@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {IconContext} from "react-icons";
+import {BsTrash} from 'react-icons/bs';
 
 export default class Listings extends Component{
     constructor(props){
@@ -16,7 +18,7 @@ export default class Listings extends Component{
         axios.get("http://localhost:4000/api/products").then(res => {
             let temp = []
             res.data.forEach(el => {
-                temp.push(el)
+                if(el.cart === 'true') temp.push(el)
             })
             this.setState({products: temp})
         })
@@ -25,30 +27,49 @@ export default class Listings extends Component{
     remove(product){
         axios.put(`http://localhost:4000/api/products/${product.id}`,
         `cart=false`)
+
+        for (let index = 0; index < this.state.products.length; index++) {
+            const element = this.state.products[index];
+            if(element.id === product.id){
+                let spliceIndex = this.state.products.indexOf(element)
+                let temp = this.state.products
+                temp.splice(spliceIndex, 1)
+                this.setState({products: temp})
+            }
+        }
+    }
+    
+    detailsCallback(e, product){
+        if(e.target.classList.contains('product-title-price') || e.target.parentElement.classList.contains('product-title-price') || e.target.classList.contains('product-content') )
+            this.props.detailsCallback(product)
     }
 
     render(){
         return(
             <React.Fragment>
                 <h2 className="secondary">Cart</h2>
-                {this.props.products.map((product, index) => 
+                {this.state.products.map((product, index) => 
                     <div className="product" key={index}>
                         <div className="product-img">
                             <img alt="" src={product.img}/>
                         </div>
 
-                        <div className="product-content">
+                        <div className="product-content" onClick={(e) => this.detailsCallback(e, product)}>
                             <div className="product-title-price">
                                 <p>{product.title}</p>
                                 <p>${product.price}</p>
                             </div>
                             <div className="product-details-buy">
-                                <button onClick={() => this.remove(product)}>remove</button>
+                                <IconContext.Provider value={{className: 'cart-icon icon'}}>
+                                    <div onClick={() => this.remove(product)}>
+                                        <BsTrash/>
+                                    </div>
+                                </IconContext.Provider>
                             </div>
                         </div>
                     </div>
                 )}
-                <button onClick={this.props.buyNowPage}>buy now</button>
+                <button className="cart-buy-now" onClick={this.props.buyNowPage}>buy now</button>
             </React.Fragment>
         )
     }

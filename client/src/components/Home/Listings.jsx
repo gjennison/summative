@@ -20,7 +20,7 @@ export default class Home extends Component{
         axios.get("http://localhost:4000/api/products").then(res => {
             let temp = []
             res.data.forEach(el => {
-                if(el.favourites === 'yes') el.isFavourite = true;
+                if(el.favourites === 'true') el.isFavourite = true;
                 else el.isFavourite = false;
                 console.log(el)
                 temp.push(el)
@@ -35,12 +35,12 @@ export default class Home extends Component{
 
     addToCart(product){
         axios.put(`http://localhost:4000/api/products/${product.id}`,
-        `cart=yes`)
+        `cart=true`)
     }
 
     addToFavourites(e, product){
         axios.put(`http://localhost:4000/api/products/${product.id}`,
-        `favourites=yes`)
+        `favourites=true`)
         let productContainer = e.target;
         while(!productContainer.classList.contains('product-img')){
             productContainer = productContainer.parentElement
@@ -53,7 +53,7 @@ export default class Home extends Component{
 
     removeFromFavourites(e, product){
         axios.put(`http://localhost:4000/api/products/${product.id}`,
-        `favourites=no`)
+        `favourites=true`)
         let productContainer = e.target.parentElement.parentElement.parentElement
         if(productContainer.classList.contains('product-img')){
             if(productContainer.classList.contains('favourite')){
@@ -103,15 +103,15 @@ export default class Home extends Component{
                                 </div>
                             </IconContext.Provider>
                         </div>
-                        <div className="product-content">
+                        <div className="product-content" onClick={() => this.props.detailsCallback(product)}>
                             <div className="product-title-price">
                                 <p>{product.title}</p>
-                                <p>${product.price}</p>
+                                <p className="price">${product.price}</p>
                             </div>
-                            <div className="product-details-buy">
+                            {/* <div className="product-details-buy">
                                 <button onClick={() => this.props.detailsCallback(product)}>view details</button>
                                 <button onClick={() => this.addToCart(product)}>add to cart</button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 )}

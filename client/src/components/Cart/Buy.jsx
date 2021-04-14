@@ -3,6 +3,7 @@ import Address from "./Buy/Address";
 import Shipping from "./Buy/Shipping";
 import Payment from "./Buy/Payment";
 import PlaceOrder from "./Buy/PlaceOrder";
+import back from '../../back.png';
 
 export default class Buy extends Component{
     constructor(props){
@@ -40,18 +41,50 @@ export default class Buy extends Component{
         this.setState({cartPage: this.state.cartPage + 1})
     }
 
-    render(){
-        let currentPage;
+    gotoPage(page){
+        this.setState({cartPage: page})
+    }
 
-        if(this.state.cartPage === 0) currentPage = <Address continue={this.nextPage}/>
-        else if(this.state.cartPage === 1) currentPage = <Shipping continue={this.continue}/>
-        else if(this.state.cartPage === 2) currentPage = <Payment productsCost={this.state.productsCost} 
+    render(){
+        let currentPage, shippingHasProgressed, paymentHasProgressed;
+
+        if(this.state.cartPage === 0) {
+            currentPage = <Address continue={this.nextPage}/>
+            shippingHasProgressed = false;
+            paymentHasProgressed = false;
+        }
+        else if(this.state.cartPage === 1) {
+            currentPage = <Shipping continue={this.continue}/>
+            shippingHasProgressed = true;
+        }
+        else if(this.state.cartPage === 2) {
+            currentPage = <Payment productsCost={this.state.productsCost} 
         shippingCost={this.state.shippingCost} shippingType={this.state.shippingType} totalCost={this.state.totalCost}/>
+            shippingHasProgressed = true;
+            paymentHasProgressed = true;
+        }
         else if(this.state.cartPage === 3) currentPage = <PlaceOrder/>
 
         return(
             <div>
-                <h1>Buy now</h1>
+                <div className="navbar" onClick={this.props.backCallback}>
+                    <img src={back} alt=""/>
+                    <p>cart</p>
+                </div>
+                <div className="progress-bubbles">
+                    <div onClick={() => this.gotoPage(0)} className="bubble bubbleProgressed">
+                        <div><span>&nbsp;1&nbsp;</span></div>
+                        <p className="greyheading">Address</p>
+                    </div>
+                    <div onClick={() => this.gotoPage(1)} className={`bubble ${shippingHasProgressed ? "bubbleProgressed" : "bubbleNotProgressed"}`}>
+                        <div><span>&nbsp;2&nbsp;</span></div>
+                        <p className="greyheading">Shipping</p>
+                    </div>
+                    <div onClick={() => this.gotoPage(2)} className={`bubble ${paymentHasProgressed ? "bubbleProgressed" : "bubbleNotProgressed"}`}>
+                        <div><span>&nbsp;3&nbsp;</span></div>
+                        <p className="greyheading">Payment</p>
+                    </div>
+                </div>
                 {currentPage}
             </div>
         )
