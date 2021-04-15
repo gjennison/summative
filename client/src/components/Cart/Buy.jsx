@@ -28,7 +28,6 @@ export default class Buy extends Component{
 
     continue = (data) => {
         let total = (parseInt(this.state.productsCost)+data.cost).toFixed(2)
-        console.log(data.selected)
         this.setState({ cartPage: this.state.cartPage+1,
                         shippingType: data.selected,
                         shippingCost: data.cost.toFixed(2),

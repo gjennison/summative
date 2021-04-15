@@ -22,7 +22,6 @@ export default class Home extends Component{
             res.data.forEach(el => {
                 if(el.favourites === 'true') el.isFavourite = true;
                 else el.isFavourite = false;
-                console.log(el)
                 temp.push(el)
             })
             this.setState({products: temp})
@@ -61,16 +60,6 @@ export default class Home extends Component{
                 productContainer.classList.add('notFavourite')
             }
         }
-        // for (let index = 0; index < this.state.products.length; index++) {
-        //     const element = this.state.products[index];
-        //     if(element === product){
-        //         product.isFavourite = "no"
-        //         let temp = this.state.products
-        //         temp[index] = product
-        //         this.setState({products: temp})
-        //         console.log(temp)
-        //     }
-        // }
     }
 
     render(){
@@ -108,10 +97,6 @@ export default class Home extends Component{
                                 <p>{product.title}</p>
                                 <p className="price">${product.price}</p>
                             </div>
-                            {/* <div className="product-details-buy">
-                                <button onClick={() => this.props.detailsCallback(product)}>view details</button>
-                                <button onClick={() => this.addToCart(product)}>add to cart</button>
-                            </div> */}
                         </div>
                     </div>
                 )}

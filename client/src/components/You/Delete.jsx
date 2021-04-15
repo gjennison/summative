@@ -12,7 +12,6 @@ export default class Delete extends Component{
 
     delete(product){
         axios.delete(`http://localhost:4000/api/products/${this.props.product.id}`, {params: {}})
-        console.log(`deleted: ${this.props.product.id}`)
         this.props.callback();
     }
     

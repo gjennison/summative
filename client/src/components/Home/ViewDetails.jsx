@@ -14,7 +14,6 @@ export default class ViewDetails extends Component{
     addToFavourites(e, product){
         axios.put(`http://localhost:4000/api/products/${product.id}`,
         `favourites=true`)
-        console.log(e.target)
 
         let iconContainer;
         let parentparent = e.target.parentElement.parentElement;
@@ -24,15 +23,11 @@ export default class ViewDetails extends Component{
 
         iconContainer.classList.remove('notFavourite')
         iconContainer.classList.add('favourite')
-
-        console.log(iconContainer)
-        console.log(iconContainer.classList)
     }
 
     removeFromFavourites(e, product){
         axios.put(`http://localhost:4000/api/products/${product.id}`,
         `favourites=true`)
-        console.log(e.target)
 
         let iconContainer;
         let parentparent = e.target.parentElement.parentElement;
@@ -42,9 +37,6 @@ export default class ViewDetails extends Component{
 
         iconContainer.classList.add('notFavourite')
         iconContainer.classList.remove('favourite')
-        
-        console.log(iconContainer)
-        console.log(iconContainer.classList)
     }
 
     render(){

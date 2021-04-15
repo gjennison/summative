@@ -24,7 +24,6 @@ export default class You extends Component{
             res.data.forEach(el => {
                 if(el.user ==='you')
                    temp.push(el)
-                //    console.log(el.user)
             })
             this.setState({products: temp})
         })

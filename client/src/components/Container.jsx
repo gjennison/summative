@@ -43,16 +43,8 @@ export default class Container extends Component{
         this.setState({screenState: state})
 
         let allTabs = document.querySelectorAll('.tab')
-        // let currentTab = e.target;
 
         let currentTab = document.querySelector('.' + state + '-tab')
-
-        // if(e.target.classList.contains('tab')) currentTab = e.target
-        // else if(e.target.parentElement.classList.contains('tab')) currentTab = e.target.parentElement
-        // else if(e.target.parentElement.parentElement.classList.contains('tab')) {
-        //     currentTab = e.target.parentElement.parentElement
-        //     console.log(e.target.parentElement.parentElement)
-        // }
 
         currentTab.classList.add('active')
         currentTab.classList.remove('inactive')
@@ -76,7 +68,6 @@ export default class Container extends Component{
             <React.Fragment>
                 {currentState}
                 <div className="tabs">
-                    {/* <div className="tab" onClick={() => this.setState({screenState: "home"})}> */}
                     <div className="tab active home-tab" onClick={(e) => this.changeState(e, 'home')}>
                         <IconContext.Provider value={{className: 'icon-inactive'}}>
                             <div>

@@ -16,7 +16,6 @@ export default class Cart extends Component{
     }
     
     buyNowPage = e => {
-        console.log('buy now')
         this.setState({state: 'buy'})
     }
     

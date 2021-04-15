@@ -35,17 +35,14 @@ export default class Edit extends Component{
     }
 
     conditionChange = e => {
-        console.log(e.target.value)
         this.setState({condition: e.target.value})
     }
 
     shippingChange = e => {
-        console.log(e.target.value)
         this.setState({shipping: e.target.value})
     }
 
     pickupChange = e => {
-        console.log(e.target.value)
         this.setState({pickup: e.target.value})
     }
 
@@ -54,8 +51,6 @@ export default class Edit extends Component{
     }
 
     submit = e => {
-
-        console.log(this.state.condition)
         axios.put(`http://localhost:4000/api/products/${this.props.product.id}`,
             `title=${this.state.title}&description=${this.state.description}&location=${this.state.location}&price=${this.state.price}&condition=${this.state.condition}&shipping=${this.state.shipping}&pickup=${this.state.pickup}`)
     }

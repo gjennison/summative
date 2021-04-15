@@ -79,27 +79,22 @@ export default class ListNew extends Component{
 
                 <div className="container">
                     <div className="push-section">
-                        {/* <h5 className="subheading">Title</h5> */}
                         <input onChange={this.titleChange} placeholder="Title" type="text" value={this.state.title}/>
                     </div>
 
                     <div className="push-section">
-                        {/* <h5 className="subheading">Location</h5> */}
                         <input onChange={this.locationChange} placeholder="Location" type="text" value={this.state.location}/>
                     </div>
 
                     <div className="push-section">
-                        {/* <h5 className="subheading">Location</h5> */}
                         <input onChange={this.imgChange} placeholder="img url" type="text" value={this.state.img}/>
                     </div>
 
                     <div className="push-section">
-                        {/* <h5 className="subheading">Description</h5> */}
                         <textarea onChange={this.descriptionChange} placeholder="Description" rows="4" value={this.state.description}></textarea>
                     </div>
                     
                     <div className="push-section">
-                        {/* <h5 className="subheading">Price</h5> */}
                         <input onChange={this.priceChange} placeholder="$0.00" type="text" value={this.state.price}/>
                     </div>
 
