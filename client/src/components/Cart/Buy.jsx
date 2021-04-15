@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Address from "./Buy/Address";
 import Shipping from "./Buy/Shipping";
 import Payment from "./Buy/Payment";
-import PlaceOrder from "./Buy/PlaceOrder";
 import back from '../../back.png';
 
 export default class Buy extends Component{
@@ -63,7 +62,6 @@ export default class Buy extends Component{
             shippingHasProgressed = true;
             paymentHasProgressed = true;
         }
-        else if(this.state.cartPage === 3) currentPage = <PlaceOrder/>
 
         return(
             <div>

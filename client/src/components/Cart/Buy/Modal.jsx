@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {IconContext} from "react-icons";
+import {AiFillCloseCircle} from 'react-icons/ai';
 
 export default class Modal extends Component{
     constructor(props){
@@ -19,6 +21,11 @@ export default class Modal extends Component{
         return(
             <div className="modal" onClick={this.closeModal}>
                 <div className="modal-content">
+                    <IconContext.Provider value={{className: 'icon modal-icon'}}>
+                        <div>
+                            <AiFillCloseCircle/>
+                        </div>
+                    </IconContext.Provider>
                     <p className="subheading">Purchase Confirmed!</p>
                 </div>
             </div>
