@@ -32,8 +32,7 @@ export default class ViewDetails extends Component{
     }
 
     addToFavourites(e, product){
-        if(this.state.isInFavourites) axios.put(`http://localhost:4000/api/products/${product.id}`,`favourites=false`)
-        else axios.put(`http://localhost:4000/api/products/${product.id}`,`favourites=true`)
+        axios.put(`http://localhost:4000/api/products/${product.id}`,`favourites=true`)
 
         let iconContainer;
         let parentparent = e.target.parentElement.parentElement;
@@ -49,7 +48,7 @@ export default class ViewDetails extends Component{
 
     removeFromFavourites(e, product){
         axios.put(`http://localhost:4000/api/products/${product.id}`,
-        `favourites=true`)
+        `favourites=false`)
 
         let iconContainer;
         let parentparent = e.target.parentElement.parentElement;
