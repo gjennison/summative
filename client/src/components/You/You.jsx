@@ -57,6 +57,15 @@ export default class You extends Component{
         this.props.masterCallback(state)
     }
 
+    confirmDelete = (product) => {
+        let arrayIndex = this.state.products.indexOf(product);
+        let temp = this.state.products;
+
+        temp.splice(arrayIndex, 1);
+
+        this.setState({product: temp})
+    }
+
     render(){
         let currentState;
 
@@ -73,7 +82,7 @@ export default class You extends Component{
         return(
             <div>
                 {currentState}
-                <Delete product={this.state.currentProduct[0]} callback={this.closeDeleteModalCallback} displayDelete={this.state.displayDelete}/>
+                <Delete product={this.state.currentProduct[0]} confirmDelete={this.confirmDelete} callback={this.closeDeleteModalCallback} displayDelete={this.state.displayDelete}/>
             </div>
         )
     }

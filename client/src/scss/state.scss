@@ -51,3 +51,38 @@
         transform: scale(1);
     }
 }
+
+.post-button-bounce{
+    animation: post-bounce 0.2s;
+}
+
+.post-button-bounce2{
+    animation: post-bounce2 0.2s;
+}
+
+@keyframes post-bounce{
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes post-bounce2{
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

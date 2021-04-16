@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IconContext } from "react-icons";
+import {IconContext} from "react-icons";
 import {AiFillStar} from 'react-icons/ai';
 import smile from '../../smile.png';
 import face from '../../face.png';
@@ -8,13 +8,6 @@ import profile from '../../profile.png';
 import back from '../../back.png';
 
 export default class Account extends Component{
-    constructor(props){
-        super(props)
-
-        this.state = {
-            
-        }
-    }
     render(){
         return(
             <React.Fragment>

@@ -18,7 +18,6 @@ export default class ViewDetails extends Component{
         }
     }
     addToCart(product){
-
         if(this.state.isInCart){
             axios.put(`http://localhost:4000/api/products/${product.id}`,
             `cart=false`)

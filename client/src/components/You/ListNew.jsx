@@ -15,6 +15,7 @@ export default class ListNew extends Component{
             condition: "new",
             shipping: "arranged on sale",
             pickup: "no",
+            bounceButton: false,
         }
     }
 
@@ -70,6 +71,8 @@ export default class ListNew extends Component{
             axios.post('http://localhost:4000/api/products',
             `title=${this.state.title}&description=${this.state.description}&price=${this.state.price.slice(1)}&img=${this.state.img}&user=you&location=${this.state.location}&condition=${this.state.condition}&shipping=${this.state.shipping}&pickup=${this.state.pickup}&favourites=false&cart=false&id=${highest}`)
         })
+
+        this.setState({bounceButton: !this.state.bounceButton})
 
     }
 
@@ -128,7 +131,7 @@ export default class ListNew extends Component{
                         </div>
                     </div>
                     <div className="push-submit">
-                        <button onClick={this.submit}>submit</button>
+                        <button className={ (this.state.bounceButton ? 'post-button-bounce' : 'post-button-bounce2') } onClick={this.submit}>submit</button>
                     </div>
                 </div>
             </div>

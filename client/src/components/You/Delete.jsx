@@ -5,19 +5,12 @@ import {TiTick} from 'react-icons/ti';
 import {ImCross} from 'react-icons/im';
 
 export default class Delete extends Component{
-    constructor(props){
-        super(props)
-
-        this.state = {
-            
-        }
-    }
-
-    delete(product){
+    delete = e => {
         axios.delete(`http://localhost:4000/api/products/${this.props.product.id}`, {params: {}})
         console.log(this.props.product.id)
         console.log(this.props.product)
         this.props.callback();
+        this.props.confirmDelete(this.props.product)
     }
     
     render(){
@@ -34,7 +27,7 @@ export default class Delete extends Component{
                                 </div>
                             </IconContext.Provider>
                             <IconContext.Provider value={{className: 'delete-icon'}}>
-                                <div onClick={() => this.delete(this.props.product)}>
+                                <div onClick={this.delete}>
                                     <TiTick/>
                                 </div>
                             </IconContext.Provider>
