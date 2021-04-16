@@ -6,14 +6,34 @@ import {AiFillHeart} from 'react-icons/ai';
 import back from '../../back.png';
 
 export default class ViewDetails extends Component{
+
+    constructor(props){
+        super(props)
+        
+        this.state = {
+            bounceButton: false,
+            bounceLike: false,
+            isInCart: (this.props.product.cart == 'true'),
+            isInFavourites: (this.props.product.favourites == 'true')
+        }
+    }
     addToCart(product){
-        axios.put(`http://localhost:4000/api/products/${product.id}`,
-        `cart=true`)
+
+        if(this.state.isInCart){
+            axios.put(`http://localhost:4000/api/products/${product.id}`,
+            `cart=false`)
+        }
+        else{
+            axios.put(`http://localhost:4000/api/products/${product.id}`,
+            `cart=true`)    
+        }
+
+        this.setState({bounceButton: !this.state.bounceButton, isInCart: !this.state.isInCart})
     }
 
     addToFavourites(e, product){
-        axios.put(`http://localhost:4000/api/products/${product.id}`,
-        `favourites=true`)
+        if(this.state.isInFavourites) axios.put(`http://localhost:4000/api/products/${product.id}`,`favourites=false`)
+        else axios.put(`http://localhost:4000/api/products/${product.id}`,`favourites=true`)
 
         let iconContainer;
         let parentparent = e.target.parentElement.parentElement;
@@ -23,6 +43,8 @@ export default class ViewDetails extends Component{
 
         iconContainer.classList.remove('notFavourite')
         iconContainer.classList.add('favourite')
+
+        this.setState({bounceLike: !this.state.bounceLike})
     }
 
     removeFromFavourites(e, product){
@@ -54,9 +76,8 @@ export default class ViewDetails extends Component{
                             <h2>{this.props.product.title}</h2>
                             <p className="location">{this.props.product.location}</p>
                         </div>
-
                         <div className={`icon-container ${this.props.product.isFavourite ? "favourite": "notFavourite"}`}>
-                            <IconContext.Provider value={{className: 'icon icon-notFavourite'}}>
+                            <IconContext.Provider value={{className: ('icon icon-notFavourite')}}>
                             <div onClick={(e) => this.addToFavourites(e, this.props.product)}>
                                 <AiOutlineHeart />
                             </div>
@@ -67,11 +88,10 @@ export default class ViewDetails extends Component{
                                 </div>
                             </IconContext.Provider>
                         </div>
-
                     </div>
                     <div className="view-details-price-add-to-cart">
                         <p className="price">${this.props.product.price}</p>
-                        <button onClick={() => this.addToCart(this.props.product)}>add to cart</button>
+                        <button className={(this.state.isInCart ? 'button-is-in-cart': 'button-is-not-in-cart')  + ' ' + (this.state.bounceButton ? 'button-bounce' : 'button-bounce2') } onClick={() => this.addToCart(this.props.product)}>add to cart</button>
                     </div>
 
                     <p className="subheading">Product description</p>

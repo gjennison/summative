@@ -199,3 +199,45 @@ input, textarea{
         }
     }
 }
+
+.button-is-not-in-cart{
+    background-color: $secondary;
+}
+
+.button-is-in-cart{
+    background-color: $tertiary;
+}
+
+.button-bounce{
+    animation: grow 0.4s;
+}
+.button-bounce2{
+    animation: grow2 0.4s;
+}
+
+@keyframes grow{
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes grow2{
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
