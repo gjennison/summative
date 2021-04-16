@@ -18,7 +18,10 @@ export default class Container extends Component{
         super(props)
 
         this.state = {
-            screenState: "home"
+            screenState: "home",
+            homeClicked: false,
+            youClicked: false,
+            cartClicked: false,
         }
     }
     
@@ -55,14 +58,18 @@ export default class Container extends Component{
                 el.classList.add('inactive')
             }
         })
+
+        if(state === "home") this.setState({homeClicked: true})
+        else if(state === "cart") this.setState({cartClicked: true})
+        else if(state === "you") this.setState({youClicked: true})
     }
 
     render(){
         let currentState;
 
-        if(this.state.screenState === "home") currentState = <Home/>
-        else if(this.state.screenState === "you") currentState = <You masterCallback={this.youCallback}/>
-        else if(this.state.screenState === "cart") currentState = <Cart/>
+        if(this.state.screenState === "home") currentState = <Home homeClickedCallback={() => this.setState({homeClicked: false})} clicked={this.state.homeClicked}/>
+        else if(this.state.screenState === "you") currentState = <You youClickedCallback={() => this.setState({youClicked: false})} clicked={this.state.youClicked} masterCallback={this.youCallback}/>
+        else if(this.state.screenState === "cart") currentState = <Cart cartClickedCallback={() => this.setState({cartClicked: false})} clicked={this.state.cartClicked}/>
         else currentState = <Favourites/>
         return(
             <React.Fragment>

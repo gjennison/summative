@@ -42,6 +42,12 @@ export default class Cart extends Component{
 
     render(){
         let state;
+
+        if(this.props.clicked){
+            this.setState({state: 'listings'});
+            this.props.cartClickedCallback();
+        }
+        
         if(this.state.state === 'listings') state = <Listings detailsCallback={this.detailsCallback}  products={this.state.products} buyNowPage={this.buyNowPage}/>;
         else if (this.state.state === 'details') state = <ViewDetails title="cart" callBACK={this.callBACK} product={this.state.detailsData[0]}/>
         else state = <Buy backCallback={this.callBACK} products={this.state.products}/>

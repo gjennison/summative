@@ -33,6 +33,11 @@ export default class Home extends Component{
     render(){
         let currentState;
 
+        if(this.props.clicked){
+            this.setState({whichState: 'home'})
+            this.props.homeClickedCallback();
+        }
+
         if(this.state.whichState === 'details'){
             currentState = <ViewDetails title="home" product={this.state.detailsData[0]} callBACK={this.goBack} buyCallback={this.buyCallback}/>
         }

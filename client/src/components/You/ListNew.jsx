@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import back from '../../back.png';
 
 export default class ListNew extends Component{
     constructor(props){
@@ -75,7 +76,10 @@ export default class ListNew extends Component{
     render(){
         return(
             <div className="push">
-                <div className="navbar" onClick={this.props.backCallback}>you</div>
+                <div className="navbar" onClick={this.props.backCallback}>
+                    <img src={back} alt=""/>
+                    <p>you</p>
+                </div>
 
                 <div className="container">
                     <div className="push-section">
