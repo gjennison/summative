@@ -46,7 +46,7 @@ router.get("/products", (req, res) => {
     (productsArray) => {
       res.json(productsArray);
     },
-    () => {
+    () => {/
       res.json({ result: false });
     }
   );

@@ -77,7 +77,7 @@ export default class Home extends Component{
                     <input className="" type="text" placeholder="search" value={this.state.search} onChange={this.search}/>
                 </div>
                 <p className="subheading" style={{display: displayRecommend ? 'block' : 'none'}}><strong>Recommended for you</strong></p>
-                {this.state.products.filter(product => product.title.includes(this.state.search)).map((product, index) => 
+                {this.state.products.filter(product => (product.title).toLowerCase().includes((this.state.search).toLowerCase())).map((product, index) => 
                     <div className="product" key={index}>
                         <div className={`product-img ${product.isFavourite ? "favourite": "notFavourite"}`}>
                             <img alt="" src={product.img}/>
