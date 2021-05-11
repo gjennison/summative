@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // connection code
-mongoose.connect(conn.atlasURL, {
+mongoose.connect( process.env.MONGODB_URI || conn.atlasURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -139,7 +139,11 @@ router.put("/products/:id", (req, res) => {
   });
 });
 
-let PORT = 4000;
-app.listen(process.env.PORT || 4000, "0.0.0.0", () => {
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('../client/build'));
+}
+
+const PORT = 8080;
+app.listen(process.env.PORT || PORT, "0.0.0.0", () => {
   console.log(`listening on port ${PORT}`);
 });
