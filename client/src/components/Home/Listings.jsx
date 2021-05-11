@@ -17,7 +17,7 @@ export default class Home extends Component{
     }
 
     componentDidMount(){
-        axios.get("http://localhost:4000/api/products").then(res => {
+        axios.get("https://dry-river-04948.herokuapp.com/api/products").then(res => {
             let temp = []
             res.data.forEach(el => {
                 if(el.favourites === 'true') el.isFavourite = true;
@@ -33,12 +33,12 @@ export default class Home extends Component{
     }
 
     addToCart(product){
-        axios.put(`http://localhost:4000/api/products/${product.id}`,
+        axios.put(`https://dry-river-04948.herokuapp.com/api/products/${product.id}`,
         `cart=true`)
     }
 
     addToFavourites(e, product){
-        axios.put(`http://localhost:4000/api/products/${product.id}`,
+        axios.put(`https://dry-river-04948.herokuapp.com/api/products/${product.id}`,
         `favourites=true`)
         let productContainer = e.target;
         while(!productContainer.classList.contains('product-img')){
@@ -51,7 +51,7 @@ export default class Home extends Component{
     }
 
     removeFromFavourites(e, product){
-        axios.put(`http://localhost:4000/api/products/${product.id}`,
+        axios.put(`https://dry-river-04948.herokuapp.com/api/products/${product.id}`,
         `favourites=true`)
         let productContainer = e.target.parentElement.parentElement.parentElement
         if(productContainer.classList.contains('product-img')){

@@ -15,7 +15,7 @@ export default class Listings extends Component{
     }
 
     componentDidMount(){
-        axios.get("http://localhost:4000/api/products").then(res => {
+        axios.get("https://dry-river-04948.herokuapp.com/api/products").then(res => {
             let temp = []
             res.data.forEach(el => {
                 temp.push(el)

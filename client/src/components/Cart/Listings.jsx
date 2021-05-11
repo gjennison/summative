@@ -15,7 +15,7 @@ export default class Listings extends Component{
     }
 
     componentDidMount(){
-        axios.get("http://localhost:4000/api/products").then(res => {
+        axios.get("https://dry-river-04948.herokuapp.com/api/products").then(res => {
             let temp = []
             res.data.forEach(el => {
                 if(el.cart === 'true') temp.push(el)
@@ -25,7 +25,7 @@ export default class Listings extends Component{
     }
 
     remove(product){
-        axios.put(`http://localhost:4000/api/products/${product.id}`,
+        axios.put(`https://dry-river-04948.herokuapp.com/api/products/${product.id}`,
         `cart=false`)
 
         for (let index = 0; index < this.state.products.length; index++) {

@@ -6,7 +6,7 @@ import {ImCross} from 'react-icons/im';
 
 export default class Delete extends Component{
     delete = e => {
-        axios.delete(`http://localhost:4000/api/products/${this.props.product.id}`, {params: {}})
+        axios.delete(`https://dry-river-04948.herokuapp.com/api/products/${this.props.product.id}`, {params: {}})
         console.log(this.props.product.id)
         console.log(this.props.product)
         this.props.callback();

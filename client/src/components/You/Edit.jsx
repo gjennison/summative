@@ -51,7 +51,7 @@ export default class Edit extends Component{
     }
 
     submit = e => {
-        axios.put(`http://localhost:4000/api/products/${this.props.product.id}`,
+        axios.put(`https://dry-river-04948.herokuapp.com/api/products/${this.props.product.id}`,
             `title=${this.state.title}&description=${this.state.description}&location=${this.state.location}&price=${this.state.price}&condition=${this.state.condition}&shipping=${this.state.shipping}&pickup=${this.state.pickup}`)
     }
     
