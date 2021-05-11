@@ -140,7 +140,7 @@ router.put("/products/:id", (req, res) => {
 });
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('../client/build'));
+  app.use(express.static('client/build'));
 }
 
 const PORT = 8080;
